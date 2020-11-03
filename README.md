@@ -3,7 +3,7 @@ MPS project
 
 About:
 
-This ML projects is about inference for patients that are suspects for COVID-19 desease. 
+This ML project is about inference for patients that are suspects for COVID-19 desease. 
 
 Team:
 
