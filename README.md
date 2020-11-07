@@ -32,13 +32,21 @@ https://github.com/criscojocaru/VintilaSiFormatia/wiki
 
 ### Prerequisites
 
-Install [Python 3](https://www.python.org/downloads/)
+1. Install [Python 3](https://www.python.org/downloads/)
 
-Run the following commands in an elevated PowerShell window / CMD window:
+2. Run the following commands in an elevated PowerShell window / CMD window:
 
 python -m pip install --upgrade pip
 
 pip install ludwig
+
+3. (Optional step) If you're using Windows, on build 2004 you have to run:
+
+pip install numpy==1.19.3
+
+4. Also run the following command:
+
+python -m spacy download en
 
 ### Installation
 
