@@ -33,8 +33,11 @@ https://github.com/criscojocaru/VintilaSiFormatia/wiki
 ### Prerequisites
 
 Install [Python 3](https://www.python.org/downloads/)
+
 Run the following commands in an elevated PowerShell window / CMD window:
+
 python -m pip install --upgrade pip
+
 pip install ludwig
 
 ### Installation
