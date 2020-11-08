@@ -1,16 +1,14 @@
 import sys
 import csv
 from ludwig.api import LudwigModel
+# import ludwig
 
 
 from preprocess import preprocess
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Incorrect number of arguments. Please use format:\npython main.py <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
-
-    with open(sys.argv[1]) as f_in:
+def preprocess_dataset(input_file, output_file):
+    with open(input_file) as f_in:
         c = csv.reader(f_in, delimiter=",")
 
         processed_rows = [['source_institution', 'gender', 'age', 'declared_symptoms',
@@ -31,27 +29,35 @@ if __name__ == "__main__":
             elif i == 0:
                 i += 1
 
-        with open(sys.argv[2], 'w+') as f_out:
+        with open(output_file, 'w+') as f_out:
             csv_writer = csv.writer(f_out)
             for row in processed_rows:
                 csv_writer.writerow(row)
 
-        # config = {
-        #     input_features:
-        #     [
-        #         {name: source_institution, type: category},
-        #         {name: gender, type: category},
-        #         {name: age, type: numerical},
-        #         {name: declared_symptoms, type: category},
-        #         {name: reported_symptoms, type: category},
-        #         {name: diagnosis, type: category},
-        #         {name: travel_history, type: category},
-        #         {name: contact_confirmation, type: category},
-        #         {name: test_result, type: category},
-        #     ],
-        #     output_features: [{name: test_result, type: category}],
-        # }
-        # model = LudwigModel(config)
-        # train_stats = model.train(processed_rows)
 
-        ludwig train --dataset sys.argv[2] --config sys.argv[3]
+if __name__ == "__main__":
+    if sys.argv[1] == "train":
+        if len(sys.argv) != 5:
+            print("Incorrect number of arguments. Please use format:\npython main.py train <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
+
+        preprocess_dataset(sys.argv[2], sys.argv[3])
+
+        config = sys.argv[4]
+        model = LudwigModel(config)
+        train_stats = model.train(dataset=sys.argv[3], experiment_name='covid_experiment')
+
+        print(train_stats)
+    elif sys.argv[1] == "experiment":
+        if len(sys.argv) != 6:
+            print("Incorrect number of arguments. Please use format:\npython main.py experiment <path-to-trained-model> <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
+
+        preprocess_dataset(sys.argv[3], sys.argv[4])
+
+        config = sys.argv[5]
+        model = LudwigModel.load(sys.argv[2])
+        train_stats = model.experiment(sys.argv[4], experiment_name='covid_experiment')
+        print(train_stats)
+    else:
+        print(
+            "Incorrect arguments. Please use format:\n python main.py [train/experiment]")
+        # ludwig train --dataset sys.argv[2] --config sys.argv[3]
