@@ -1,0 +1,15 @@
+{
+  input_features:
+    [
+      { name: source_institution, type: category },
+      { name: gender, type: category },
+      { name: age, type: numerical },
+      { name: declared_symptoms, type: category },
+      { name: reported_symptoms, type: category },
+      { name: diagnosis, type: category },
+      { name: travel_history, type: category },
+      { name: contact_confirmation, type: category },
+      { name: test_result, type: category },
+    ],
+  output_features: [{ name: test_result, type: category }],
+}
