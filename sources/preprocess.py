@@ -116,7 +116,7 @@ def ignore():
     return None
 
 
-def preprocess(row, map_of_institution_codes, map_of_gender_codes):
+def preprocess(row, map_of_institution_codes, map_of_gender_codes, process_type):
     preprocessed_row = []
 
     preprocessed_row.append(source_institution(
@@ -132,6 +132,7 @@ def preprocess(row, map_of_institution_codes, map_of_gender_codes):
     # preprocessed_row.append(ignore())
     preprocessed_row.append(contact_confirmation(row[10]))
     # preprocessed_row.append(date(row[11]))
-    preprocessed_row.append(test_result(row[12]))
+    if (process_type == 1):
+        preprocessed_row.append(test_result(row[12]))
 
     return preprocessed_row
