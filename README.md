@@ -50,6 +50,11 @@ python -m spacy download en
 
 ### Installation
 
+### How to run
+
+ * python main.py train ../input/mps.dataset.csv ../output/preprocessed.dataset.csv model_definition.yaml
+ * python main.py experiment .\results\covid_experiment_run\model\ ..\input\experiment.dataset.csv ../output/preprocessed-exp.dataset.csv model_definition.yaml
+
 ## Contributing
 
 ### The team
