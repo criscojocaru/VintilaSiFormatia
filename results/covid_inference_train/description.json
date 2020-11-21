@@ -1,6 +1,6 @@
 {
     "command": ".\\sources\\main.py train .\\input\\mps.dataset.csv .\\output\\preprocessed.dataset.csv .\\sources\\model_definition.yaml",
-    "commit_hash": "03f51c3e81ab",
+    "commit_hash": "57367bf4ef8e",
     "config": {
         "combiner": {
             "type": "concat"
@@ -183,7 +183,7 @@
             "decay_rate": 0.96,
             "decay_steps": 10000,
             "early_stop": 5,
-            "epochs": 10,
+            "epochs": 2,
             "eval_batch_size": 0,
             "gradient_clipping": null,
             "increase_batch_size_on_plateau": 0,
