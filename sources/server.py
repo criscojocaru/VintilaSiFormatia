@@ -30,7 +30,7 @@ def upload():
 
         bashCommand = "python .\\sources\\main.py evaluate .\\results\\covid_inference_train\\model \"" + uploads_dir + "\\" + file.filename + "\" .\\output\\preprocessed-testing.dataset.csv .\\sources\\model_definition.yaml"
         print(bashCommand)
-        os.system(bashCommand)
+        # os.system(bashCommand)
 
         f = open("results\\test_statistics.json", "r")
         results = f.read()

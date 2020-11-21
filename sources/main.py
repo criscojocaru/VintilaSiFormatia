@@ -51,7 +51,7 @@ if __name__ == "__main__":
         print(train_stats)
     elif sys.argv[1] == "evaluate":
         if len(sys.argv) != 6:
-            print("Incorrect number of arguments. Please use format:\npython main.py predict <path-to-trained-model> <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
+            print("Incorrect number of arguments. Please use format:\npython main.py evaluate <path-to-trained-model> <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
 
         preprocess_dataset(sys.argv[3], sys.argv[4], 0)
 
