@@ -12,16 +12,17 @@ export class UploadDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
+  onlyOneFile: Boolean = false;
   files: any[] = [];
 
   ngOnInit(): void {}
 
   onConfirm(): void {
-    this.dialogRef.close(true);
+    this.dialogRef.close({ response: true, files: this.files });
   }
 
   onDismiss(): void {
-    this.dialogRef.close(false);
+    this.dialogRef.close({ response: false, files: [] });
   }
 
   /**
@@ -71,6 +72,11 @@ export class UploadDialogComponent implements OnInit {
    * @param files (Files List)
    */
   prepareFilesList(files: Array<any>) {
+    if (this.files.length === 1) {
+      this.onlyOneFile = true;
+      return;
+    }
+    this.onlyOneFile = false;
     for (const item of files) {
       item.progress = 0;
       this.files.push(item);

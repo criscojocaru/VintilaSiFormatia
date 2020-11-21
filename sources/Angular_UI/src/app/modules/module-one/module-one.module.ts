@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 import { DndDirective } from './upload-dialog/dnd.directive';
+import { ProgressComponent } from './progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DndDirective } from './upload-dialog/dnd.directive';
     ComponentOneComponent,
     UploadDialogComponent,
     DndDirective,
+    ProgressComponent,
   ],
   imports: [CommonModule, ModuleOneRouting, FlexLayoutModule, MaterialModule],
   exports: [UploadDialogComponent],

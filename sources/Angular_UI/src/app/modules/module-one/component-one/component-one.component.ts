@@ -27,7 +27,11 @@ export class ComponentOneComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
-        return;
+        if (dialogResult.response) {
+          const files = dialogResult.files;
+          console.log(files);
+          return;
+        }
       }
     });
   }

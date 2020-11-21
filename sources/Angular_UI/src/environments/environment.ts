@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   baseHref: '/covid-inference/',
-  apiResourceUri: 'http://localhost:8080/covid-inference/api'
+  uploadUri: 'http://localhost:8080/upload'
 };
