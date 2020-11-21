@@ -20,6 +20,7 @@ This ML project is about inference for patients that are suspects for COVID-19 d
 
  * Python
  * Ludwig
+ * Flask
 
 ### Wiki webpage
 https://github.com/criscojocaru/VintilaSiFormatia/wiki
@@ -47,6 +48,8 @@ pip install numpy==1.19.3
 4. Also run the following command:
 
 python -m spacy download en
+
+pip install flask
 
 ### Installation
 
