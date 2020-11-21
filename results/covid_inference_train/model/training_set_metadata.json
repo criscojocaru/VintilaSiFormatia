@@ -1,0 +1,214 @@
+{
+    "age": {
+        "preprocessing": {
+            "computed_fill_value": 0,
+            "fill_value": 0,
+            "missing_value_strategy": "fill_with_const",
+            "normalization": null
+        }
+    },
+    "contact_confirmation": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 1011,
+            "1": 40,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    },
+    "data_train_hdf5_fp": ".\\output\\preprocessed.training.dataset.hdf5",
+    "declared_symptoms": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 668,
+            "1": 383,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    },
+    "diagnosis": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 613,
+            "1": 438,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    },
+    "gender": {
+        "idx2str": [
+            "<UNK>",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "1": 1051,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "1": 1,
+            "<UNK>": 0
+        },
+        "vocab_size": 2
+    },
+    "reported_symptoms": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 672,
+            "1": 379,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    },
+    "source_institution": {
+        "idx2str": [
+            "<UNK>",
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "1": 546,
+            "2": 316,
+            "3": 188,
+            "4": 1,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 4,
+            "<UNK>": 0
+        },
+        "vocab_size": 5
+    },
+    "test_result": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 967,
+            "1": 84,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    },
+    "travel_history": {
+        "idx2str": [
+            "<UNK>",
+            "0",
+            "1"
+        ],
+        "preprocessing": {
+            "computed_fill_value": "<UNK>",
+            "fill_value": "<UNK>",
+            "lowercase": false,
+            "missing_value_strategy": "fill_with_const",
+            "most_common": 10000
+        },
+        "str2freq": {
+            "0": 1024,
+            "1": 27,
+            "<UNK>": 0
+        },
+        "str2idx": {
+            "0": 1,
+            "1": 2,
+            "<UNK>": 0
+        },
+        "vocab_size": 3
+    }
+}
