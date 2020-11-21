@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{ data?.title }}</h1>
+
+<div mat-dialog-content class="dropzone" appDnd>
+  <input
+    type="file"
+    #fileDropRef
+    id="fileDropRef"
+    multiple
+    (change)="fileBrowseHandler($event.target.files)"
+  />
+  <img src="assets/ic-upload-file.svg" alt="">
+  <h3>Drag and drop dataset here</h3>
+  <h3>or</h3>
+  <label for="fileDropRef">Browse for file</label>
+</div>
+
+<div mat-dialog-actions>
+  <div
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutAlign="center stretch"
+    fxLayoutGap="5%"
+    class="w-100"
+  >
+    <button
+      fxFlex="50%"
+      fxFlex.lt-md="100%"
+      mat-raised-button
+      color="warn"
+      (click)="onDismiss()"
+    >
+      Cancel
+    </button>
+    <button
+      fxFlex="50%"
+      fxFlex.lt-md="100%"
+      mat-raised-button
+      color="primary"
+      (click)="onConfirm()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <a class="title" [routerLink]="['/predict']">{{ title }}</a>
+
+  <div class="toolbar-spacer"></div>
+</mat-toolbar>
+<main>
+  <div *ngIf="(isLoading | async)" class="loading-indicator">
+      <mat-spinner class="pos-center"></mat-spinner>
+  </div>
+  <div>
+      <router-outlet style="text-align:center;" *ngIf="!isIframe"></router-outlet>
+  </div>
+</main>
