@@ -12,5 +12,5 @@
       { name: test_result, type: category },
     ],
   output_features: [{ name: test_result, type: category }],
-  training: {epochs: 2}
+  training: {epochs: 100}
 }

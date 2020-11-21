@@ -23,8 +23,8 @@ def preprocess_dataset(input_file, output_file, process_type):
             elif i != 0:
                 # print(row)
                 processed_row = preprocess(
-                    row, map_of_institution_codes, map_of_gender_codes, process_type)
-                if (processed_row[3] != -1 and processed_row[4] != -1 and processed_row[5] != -1):
+                    row, map_of_institution_codes, map_of_gender_codes)
+                if ((processed_row[3] != -1 or processed_row[4] != -1 or processed_row[5] != -1) or process_type == 0):
                     processed_rows.append(processed_row)
 
                 i += 1
@@ -46,22 +46,20 @@ if __name__ == "__main__":
 
         config = sys.argv[4]
         model = LudwigModel(config)
-        train_stats = model.experiment(dataset=sys.argv[3], experiment_name='covid_inference', model_name='train')
+        train_stats = model.experiment(dataset=sys.argv[3], training_set=sys.argv[3], validation_set= sys.argv[3], test_set = sys.argv[3], experiment_name='covid_inference', model_name='train')
 
         print(train_stats)
-    elif sys.argv[1] == "experiment":
+    elif sys.argv[1] == "evaluate":
         if len(sys.argv) != 6:
             print("Incorrect number of arguments. Please use format:\npython main.py predict <path-to-trained-model> <path-to-input-csv-file> <path-to-output-csv-file> <ludwig-model-definition>")
 
-        preprocess_dataset(sys.argv[3], sys.argv[4], 1)
+        preprocess_dataset(sys.argv[3], sys.argv[4], 0)
 
         config = sys.argv[5]
         model = LudwigModel.load(sys.argv[2])
-        # train_stats = model.predict(dataset=sys.argv[4])
-        train_stats = model.experiment(training_set=sys.argv[4], validation_set=sys.argv[4], test_set=sys.argv[4])
-        # train_stats = model.evaluate(dataset=sys.argv[4], skip_save_predictions=False, skip_save_eval_stats=False, collect_predictions=True, collect_overall_stats=True)
+        train_stats = model.evaluate(dataset=sys.argv[4], skip_save_predictions=False, skip_save_eval_stats=False, collect_predictions=True, collect_overall_stats=True)
         print(train_stats)
     else:
         print(
-            "Incorrect arguments. Please use format:\n python main.py [train/experiment]")
+            "Incorrect arguments. Please use format:\n python main.py [train/evaluate]")
         # ludwig train --dataset sys.argv[2] --config sys.argv[3]
