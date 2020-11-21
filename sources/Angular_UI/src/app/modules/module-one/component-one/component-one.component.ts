@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TestserviceService } from '../../../core/http/testrest/testservice.service';
 import { User } from '../../../shared/models/user';
-import { GraphService } from '../../../core/graph.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
+import { HttpService } from '../../../core/http/http.service';
 
 @Component({
   selector: 'app-component-one',
@@ -14,7 +13,7 @@ export class ComponentOneComponent implements OnInit {
   message: string;
   user: User;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public service: HttpService) {}
 
   ngOnInit(): void {}
 
@@ -22,7 +21,7 @@ export class ComponentOneComponent implements OnInit {
     const dialogRef = this.dialog.open(UploadDialogComponent, {
       maxWidth: '600px',
       data: {
-        title: 'Upload Dataset'
+        title: 'Upload Dataset',
       },
     });
     dialogRef.afterClosed().subscribe((dialogResult) => {
@@ -30,6 +29,11 @@ export class ComponentOneComponent implements OnInit {
         if (dialogResult.response) {
           const files = dialogResult.files;
           console.log(files);
+          if (files.length > 0) {
+            this.service.uploadDataset(files[0]).subscribe((results) => {
+              console.log(results);
+            });
+          }
           return;
         }
       }

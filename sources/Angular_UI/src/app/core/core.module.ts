@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TestserviceService } from './http/testrest/testservice.service';
-import { GraphService } from './graph.service';
-import { GroupGuardService } from './group-guard.service';
+import { HttpService } from './http/http.service';
 
-//Services
+// Services
 
-//components
+// components
 
 
 @NgModule({
@@ -15,6 +13,6 @@ import { GroupGuardService } from './group-guard.service';
     CommonModule
   ],
   exports: [CommonModule],
-  providers:[TestserviceService, GraphService, GroupGuardService]
+  providers: [HttpService]
 })
 export class CoreModule { }

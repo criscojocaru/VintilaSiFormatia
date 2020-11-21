@@ -10,10 +10,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { BroadcastService, MsalService } from '@azure/msal-angular';
-import { Subscriber, Subscription, Subject } from 'rxjs';
-import { User } from '../shared/models/user';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 import { LoadingService } from '../core/http/loading-service';
 import {
   Router,
@@ -23,10 +21,7 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-import { Logger, CryptoUtils } from 'msal';
-import { GraphService } from '../core/graph.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -40,8 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private loadingService: LoadingService,
-    private router: Router,
-    private dialog: MatDialog
+    private router: Router
   ) {
     this.isIframe = window !== window.parent && !window.opener;
 
