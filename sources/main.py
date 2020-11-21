@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
         config = sys.argv[4]
         model = LudwigModel(config)
-        train_stats = model.train(dataset=sys.argv[3], experiment_name='covid_inference', model_name='train')
+        train_stats = model.experiment(dataset=sys.argv[3], experiment_name='covid_inference', model_name='train')
 
         print(train_stats)
     elif sys.argv[1] == "experiment":
