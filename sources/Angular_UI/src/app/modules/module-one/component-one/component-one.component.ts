@@ -93,57 +93,62 @@ export class ComponentOneComponent implements OnInit {
             this.service
               .uploadDataset(files[0])
               .subscribe((response: EvaluateResponse) => {
-                this.evaluateResponse = this.keysToCamel(
-                  response
-                ) as EvaluateResponse;
+                setTimeout(() => {
+                  dialogResult.audio.pause();
+                  this.evaluateResponse = this.keysToCamel(
+                    response
+                  ) as EvaluateResponse;
 
-                const confusionMatrix: ConfusionMatrix[] = [];
-                confusionMatrix.push({
-                  type: 'Negative',
-                  truePositives: this.evaluateResponse.testResult
-                    .confusionMatrix[1][1],
-                  falseNegatives: this.evaluateResponse.testResult
-                    .confusionMatrix[1][2],
-                });
-                confusionMatrix.push({
-                  type: 'Positive',
-                  truePositives: this.evaluateResponse.testResult
-                    .confusionMatrix[2][2],
-                  falseNegatives: this.evaluateResponse.testResult
-                    .confusionMatrix[2][1],
-                });
-                this.dataSourceGeneral = new MatTableDataSource<ConfusionMatrix>();
-                this.dataSourceGeneral.data = confusionMatrix;
+                  const confusionMatrix: ConfusionMatrix[] = [];
+                  confusionMatrix.push({
+                    type: 'Negative',
+                    truePositives: this.evaluateResponse.testResult
+                      .confusionMatrix[1][1],
+                    falseNegatives: this.evaluateResponse.testResult
+                      .confusionMatrix[1][2],
+                  });
+                  confusionMatrix.push({
+                    type: 'Positive',
+                    truePositives: this.evaluateResponse.testResult
+                      .confusionMatrix[2][2],
+                    falseNegatives: this.evaluateResponse.testResult
+                      .confusionMatrix[2][1],
+                  });
+                  this.dataSourceGeneral = new MatTableDataSource<ConfusionMatrix>();
+                  this.dataSourceGeneral.data = confusionMatrix;
 
-                const specificData: SpecificData[] = [];
-                specificData.push({
-                  type: 'Negative',
-                  accuracy: this.evaluateResponse.testResult.perClassStats[0]
-                    .accuracy,
-                  precision: this.evaluateResponse.testResult.perClassStats[0]
-                    .precision,
-                  recall: this.evaluateResponse.testResult.perClassStats[0]
-                    .recall,
-                  f1: this.evaluateResponse.testResult.perClassStats[0].f1Score,
-                });
-                specificData.push({
-                  type: 'Positive',
-                  accuracy: this.evaluateResponse.testResult.perClassStats[1]
-                    .accuracy,
-                  precision: this.evaluateResponse.testResult.perClassStats[1]
-                    .precision,
-                  recall: this.evaluateResponse.testResult.perClassStats[1]
-                    .recall,
-                  f1: this.evaluateResponse.testResult.perClassStats[1].f1Score,
-                });
+                  const specificData: SpecificData[] = [];
+                  specificData.push({
+                    type: 'Negative',
+                    accuracy: this.evaluateResponse.testResult.perClassStats[0]
+                      .accuracy,
+                    precision: this.evaluateResponse.testResult.perClassStats[0]
+                      .precision,
+                    recall: this.evaluateResponse.testResult.perClassStats[0]
+                      .recall,
+                    f1: this.evaluateResponse.testResult.perClassStats[0]
+                      .f1Score,
+                  });
+                  specificData.push({
+                    type: 'Positive',
+                    accuracy: this.evaluateResponse.testResult.perClassStats[1]
+                      .accuracy,
+                    precision: this.evaluateResponse.testResult.perClassStats[1]
+                      .precision,
+                    recall: this.evaluateResponse.testResult.perClassStats[1]
+                      .recall,
+                    f1: this.evaluateResponse.testResult.perClassStats[1]
+                      .f1Score,
+                  });
 
-                this.dataSourceSpecific = new MatTableDataSource<SpecificData>();
-                this.dataSourceSpecific.data = specificData;
+                  this.dataSourceSpecific = new MatTableDataSource<SpecificData>();
+                  this.dataSourceSpecific.data = specificData;
 
-                this.dataSourcePrediction = new MatTableDataSource<Prediction>();
-                this.dataSourcePrediction.data = this.evaluateResponse.predictions;
+                  this.dataSourcePrediction = new MatTableDataSource<Prediction>();
+                  this.dataSourcePrediction.data = this.evaluateResponse.predictions;
 
-                this.evaluateComplete = true;
+                  this.evaluateComplete = true;
+                }, 5000);
               });
           }
           return;

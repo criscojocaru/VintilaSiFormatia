@@ -33,10 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isIframe: boolean;
   isLoading: Subject<boolean> = this.loadingService.isLoading;
 
-  constructor(
-    private loadingService: LoadingService,
-    private router: Router
-  ) {
+  constructor(private loadingService: LoadingService, private router: Router) {
     this.isIframe = window !== window.parent && !window.opener;
 
     this.router.events.subscribe((event: Event) => {
@@ -63,6 +60,5 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isIframe = window !== window.parent && !window.opener;
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 }

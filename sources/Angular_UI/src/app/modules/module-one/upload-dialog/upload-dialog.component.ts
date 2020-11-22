@@ -7,6 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./upload-dialog.component.scss'],
 })
 export class UploadDialogComponent implements OnInit {
+  audio: HTMLAudioElement;
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -18,7 +19,11 @@ export class UploadDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   onConfirm(): void {
-    this.dialogRef.close({ response: true, files: this.files });
+    this.audio = new Audio();
+    this.audio.src = 'assets/audio/acceleratia.mp3';
+    this.audio.load();
+    this.audio.play();
+    this.dialogRef.close({ response: true, files: this.files, audio: this.audio });
   }
 
   onDismiss(): void {
@@ -57,6 +62,7 @@ export class UploadDialogComponent implements OnInit {
       } else {
         const progressInterval = setInterval(() => {
           if (this.files[index].progress === 100) {
+            this.audio.pause();
             clearInterval(progressInterval);
             this.uploadFilesSimulator(index + 1);
           } else {
@@ -76,6 +82,10 @@ export class UploadDialogComponent implements OnInit {
       this.onlyOneFile = true;
       return;
     }
+    this.audio = new Audio();
+    this.audio.src = 'assets/audio/baga.mp3';
+    this.audio.load();
+    this.audio.play();
     this.onlyOneFile = false;
     for (const item of files) {
       item.progress = 0;
