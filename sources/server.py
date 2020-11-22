@@ -2,6 +2,8 @@ import os
 import sys
 from flask import Flask, render_template, request, redirect, url_for
 import json
+import csv
+import json
 import configmodule
 
 
@@ -36,7 +38,41 @@ def upload():
 
         f = open("results\\test_statistics.json", "r")
         results = f.read()
-        return results
+        f.close()
+
+        my_dict = json.loads(results)
+
+
+        x = []
+        with open("\""+ uploads_dir + "\\" + file.filename + "\"") as f_in:
+            c = csv.reader(f_in, delimiter=",")
+            i = 0
+            for row in c:
+                if i != 0:
+                    y = {'gender': row[1], 'age': row[2]}
+                    x.append(y)
+                i += 1
+
+        with open("results\\test_result_predictions.csv") as f_in:
+            lin =  [line.split() for line in f_in]
+            nr = 0
+            for i in lin:
+                if i:
+                    x[nr]['prediction'] = i[0]
+                    nr += 1
+
+        with open("results\\test_result_probability.csv") as f_in:
+            lin =  [line.split() for line in f_in]
+            nr = 0
+            for i in lin:
+                if i:
+                    x[nr]['probability'] = i[0]
+                    nr += 1
+
+        my_dict['predictions'] = x
+        return str(my_dict)
+
+
 
 
 if __name__ == "__main__":

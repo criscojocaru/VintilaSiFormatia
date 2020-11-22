@@ -1,4 +1,5 @@
 source_institution,gender,age,date_symptoms_start,declared_symptoms,date_hospitalization,reported_symptoms,diagnosis,travel_history,transit_methods,contact_confirmation,date_results,test_result
+1,1,19,-1,1,-1,0,1,0,-1,0,-1,1
 1,1,80,-1,1,-1,1,1,0,-1,0,-1,1
 1,1,86,-1,1,-1,1,1,0,-1,0,-1,1
 1,1,5,-1,1,-1,1,1,1,-1,0,-1,1
