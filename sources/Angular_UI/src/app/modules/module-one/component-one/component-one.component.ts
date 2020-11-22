@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { User } from '../../../shared/models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component';
 import { HttpService } from '../../../core/http/http.service';
@@ -8,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfusionMatrix } from '../../../shared/models/confusion-matrix.model';
 import { MatSort } from '@angular/material/sort';
 import { SpecificData } from '../../../shared/models/specific-data.model';
+import { Prediction } from '../../../shared/models/prediction.model';
 
 @Component({
   selector: 'app-component-one',
@@ -22,10 +22,31 @@ export class ComponentOneComponent implements OnInit {
     'truePositives',
     'falseNegatives',
   ];
-  displayedColumnsSpecific: String[] = ['type', 'accuracy', 'precision', 'recall', 'f1'];
-  @ViewChild(MatSort) sort: MatSort;
+  displayedColumnsSpecific: String[] = [
+    'type',
+    'accuracy',
+    'precision',
+    'recall',
+    'f1',
+  ];
+  displayedColumnsPrediction: String[] = [
+    'age',
+    'gender',
+    'prediction',
+    'probability',
+  ];
+  @ViewChild('genSort') set genMatSort(sort: MatSort) {
+    this.dataSourceGeneral.sort = sort;
+  }
+  @ViewChild('specSort') set specMatSort(sort: MatSort) {
+    this.dataSourceSpecific.sort = sort;
+  }
+  @ViewChild('resSort') set resMatSort(sort: MatSort) {
+    this.dataSourcePrediction.sort = sort;
+  }
   dataSourceGeneral = new MatTableDataSource<ConfusionMatrix>();
   dataSourceSpecific = new MatTableDataSource<SpecificData>();
+  dataSourcePrediction = new MatTableDataSource<Prediction>();
 
   constructor(public dialog: MatDialog, public service: HttpService) {}
 
@@ -93,7 +114,6 @@ export class ComponentOneComponent implements OnInit {
                 });
                 this.dataSourceGeneral = new MatTableDataSource<ConfusionMatrix>();
                 this.dataSourceGeneral.data = confusionMatrix;
-                this.dataSourceGeneral.sort = this.sort;
 
                 const specificData: SpecificData[] = [];
                 specificData.push({
@@ -102,7 +122,8 @@ export class ComponentOneComponent implements OnInit {
                     .accuracy,
                   precision: this.evaluateResponse.testResult.perClassStats[0]
                     .precision,
-                  recall: this.evaluateResponse.testResult.perClassStats[0].recall,
+                  recall: this.evaluateResponse.testResult.perClassStats[0]
+                    .recall,
                   f1: this.evaluateResponse.testResult.perClassStats[0].f1Score,
                 });
                 specificData.push({
@@ -111,13 +132,16 @@ export class ComponentOneComponent implements OnInit {
                     .accuracy,
                   precision: this.evaluateResponse.testResult.perClassStats[1]
                     .precision,
-                  recall: this.evaluateResponse.testResult.perClassStats[1].recall,
+                  recall: this.evaluateResponse.testResult.perClassStats[1]
+                    .recall,
                   f1: this.evaluateResponse.testResult.perClassStats[1].f1Score,
                 });
 
                 this.dataSourceSpecific = new MatTableDataSource<SpecificData>();
                 this.dataSourceSpecific.data = specificData;
-                this.dataSourceSpecific.sort = this.sort;
+
+                this.dataSourcePrediction = new MatTableDataSource<Prediction>();
+                this.dataSourcePrediction.data = this.evaluateResponse.predictions;
 
                 this.evaluateComplete = true;
               });
