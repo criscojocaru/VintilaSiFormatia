@@ -8,7 +8,16 @@
   - [How does it work?](#how-does-it-work)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
+    - [Backend Prerequisites](#backend-prerequisites)
+    - [Frontend Prerequisites](#frontend-prerequisites)
   - [Installation](#installation)
+  - [How to run](#how-to-run)
+    - [Training and evaluation](#training-and-evaluation)
+      - [Training](#training)
+      - [Evaluation](#evaluation)
+    - [Overall Application](#overall-application)
+      - [Backend](#backend)
+      - [Frontend](#frontend)
 - [Contributing](#contributing)
   - [The Team](#the-team)
 
@@ -26,14 +35,17 @@ This ML project is about inference for patients that are suspects for COVID-19 d
 https://github.com/criscojocaru/VintilaSiFormatia/wiki
 
 ### How does it work?
- * Python script will read the data set and preprocess it
- * After preprocessing, we will train the data using Ludwig
+ * Python script will read the training data set and preprocess it
+ * After preprocessing, we will train the model using Ludwig
+ * The user access the websites and loads the dataset
+ * Call from frontend towards backend is made to evaluate the dataset on the trained model
+ * Results are returned and showed in an easy to understand way
 
 ## Getting Started
 
 ### Prerequisites
 
-#### Backend
+#### Backend Prerequisites
 
 1. Install [Python 3](https://www.python.org/downloads/)
 
@@ -53,7 +65,7 @@ python -m spacy download en
 
 pip install flask
 
-#### Frontend
+#### Frontend Prerequisites
 
 1. Install [Node.js](https://nodejs.org/en/), LTS. Make sure to also install npm and select Add to PATH
 
