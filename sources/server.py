@@ -28,7 +28,9 @@ def upload():
         # files = {​​'file': file.read()}
         file.save(os.path.join(uploads_dir, file.filename))
 
-        bashCommand = "python .\\sources\\main.py evaluate .\\results\\covid_inference_train\\model \"" + uploads_dir + "\\" + file.filename + "\" .\\output\\preprocessed-testing.dataset.csv .\\sources\\model_definition.yaml"
+        bashCommand = "python .\\sources\\main.py evaluate .\\results\\covid_inference_train\\model \"" + uploads_dir + \
+            "\\" + file.filename + \
+            "\" .\\output\\preprocessed-testing.dataset.csv .\\sources\\model_definition_evaluate.yaml"
         print(bashCommand)
         # os.system(bashCommand)
 

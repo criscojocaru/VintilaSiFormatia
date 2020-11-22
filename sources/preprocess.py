@@ -113,26 +113,29 @@ def test_result(result):
 
 
 def ignore():
-    return None
+    return -1
 
 
-def preprocess(row, map_of_institution_codes, map_of_gender_codes):
+def preprocess(row, map_of_institution_codes, map_of_gender_codes, process_type):
     preprocessed_row = []
 
     preprocessed_row.append(source_institution(
         row[0], map_of_institution_codes))
     preprocessed_row.append(gender(row[1], map_of_gender_codes))
     preprocessed_row.append(age(row[2]))
-    # preprocessed_row.append(date(row[3]))
+    if (process_type == 0):
+        preprocessed_row.append(ignore())
     preprocessed_row.append(symptoms(row[4]))
-    # preprocessed_row.append(date(row[5]))
+    if (process_type == 0):
+        preprocessed_row.append(ignore())
     preprocessed_row.append(symptoms(row[6]))
     preprocessed_row.append(symptoms(row[7]))
     preprocessed_row.append(travel_history(row[8]))
-    # preprocessed_row.append(ignore())
+    if (process_type == 0):
+        preprocessed_row.append(ignore())
     preprocessed_row.append(contact_confirmation(row[10]))
-    # preprocessed_row.append(date(row[11]))
+    if (process_type == 0):
+        preprocessed_row.append(ignore())
     preprocessed_row.append(test_result(row[12]))
 
     return preprocessed_row
-

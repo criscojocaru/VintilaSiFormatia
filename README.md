@@ -55,8 +55,8 @@ pip install flask
 
 ### How to run
 
- * python .\sources\main.py train .\input\mps.dataset.csv .\output\preprocessed.dataset.csv .\sources\model_definition.yaml
- * python .\sources\main.py experiment .\results\covid_inference_train\model\ .\input\experiment.dataset.csv .\output\preprocessed-exp.dataset.csv .\sources\model_definition.yaml
+ * python .\sources\main.py train .\input\mps.dataset.csv .\output\preprocessed.dataset.csv .\sources\model_definition_train.yaml
+ * python .\sources\main.py evaluate .\results\covid_inference_train\model .\input\experiment.dataset.csv .\output\preprocessed-exp.dataset.csv .\sources\model_definition_evaluate.yaml
 
 ## Contributing
 

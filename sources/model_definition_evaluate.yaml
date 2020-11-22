@@ -1,0 +1,20 @@
+{
+  input_features:
+    [
+      { name: source_institution, type: category },
+      { name: gender, type: category },
+      { name: age, type: numerical },
+      { name: date_symptoms_start, type: numerical },
+      { name: declared_symptoms, type: category },
+      { name: date_hospitalization, type: numerical },
+      { name: reported_symptoms, type: category },
+      { name: diagnosis, type: category },
+      { name: travel_history, type: category },
+      { name: transit_methods, type: numerical },
+      { name: contact_confirmation, type: category },
+      { name: date_results, type: numerical },
+      { name: test_result, type: category },
+    ],
+  output_features: [{ name: test_result, type: category }],
+  training: { epochs: 100 },
+}
