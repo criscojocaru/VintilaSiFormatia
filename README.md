@@ -33,6 +33,8 @@ https://github.com/criscojocaru/VintilaSiFormatia/wiki
 
 ### Prerequisites
 
+#### Backend
+
 1. Install [Python 3](https://www.python.org/downloads/)
 
 2. Run the following commands in an elevated PowerShell window / CMD window:
@@ -45,17 +47,34 @@ pip install ludwig
 
 pip install numpy==1.19.3
 
-4. Also run the following command:
+4. Also run the following commands:
 
 python -m spacy download en
 
 pip install flask
 
+#### Frontend
+
+1. Install [Node.js](https://nodejs.org/en/), LTS. Make sure to also install npm and select Add to PATH
+
+2. Navigate to /sources/Angular_UI in a PowerShell elevated prompt
+
+3. Run the following command:
+
+npm ci
+
 ### Installation
 
 ### How to run
 
+#### Training and evaluation
+
+##### Train
+
  * python .\sources\main.py train .\input\training.dataset.csv .\output\preprocessed.dataset.csv .\sources\model_definition_train.yaml
+
+##### Evaluation
+
  * python .\sources\main.py evaluate .\results\covid_inference_train\model .\input\testing.dataset.csv .\output\preprocessed-exp.dataset.csv .\sources\model_definition_evaluate.yaml
 
 ## Contributing
