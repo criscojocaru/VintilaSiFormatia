@@ -57,25 +57,45 @@ pip install flask
 
 1. Install [Node.js](https://nodejs.org/en/), LTS. Make sure to also install npm and select Add to PATH
 
-2. Navigate to /sources/Angular_UI in a PowerShell elevated prompt
+### Installation
 
-3. Run the following command:
+1. Navigate to /sources/Angular_UI in a PowerShell elevated prompt
+
+2. Run the following command:
 
 npm ci
-
-### Installation
 
 ### How to run
 
 #### Training and evaluation
 
-##### Train
+##### Training
 
  * python .\sources\main.py train .\input\training.dataset.csv .\output\preprocessed.dataset.csv .\sources\model_definition_train.yaml
 
 ##### Evaluation
 
  * python .\sources\main.py evaluate .\results\covid_inference_train\model .\input\testing.dataset.csv .\output\preprocessed-exp.dataset.csv .\sources\model_definition_evaluate.yaml
+
+#### Overall application
+
+##### Backend
+
+1. Navigate to the project's root in a PowerShell prompt
+
+2. Run the following command:
+
+python sources/server.py
+
+##### Frontend
+
+1. Navigate to the /sources/Angular_UI folder in a PowerShell prompt
+
+2. Run the following command:
+
+npm start
+
+3. Access the website application at the link: http://localhost:4200/covid-inference
 
 ## Contributing
 
