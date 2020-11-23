@@ -30,6 +30,7 @@ This ML project is about inference for patients that are suspects for COVID-19 d
  * Python
  * Ludwig
  * Flask
+ * Angular
 
 ### Wiki webpage
 https://github.com/criscojocaru/VintilaSiFormatia/wiki
