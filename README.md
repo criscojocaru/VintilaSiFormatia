@@ -38,7 +38,7 @@ https://github.com/criscojocaru/VintilaSiFormatia/wiki
 ### How does it work?
  * Python script will read the training data set and preprocess it
  * After preprocessing, we will train the model using Ludwig
- * The user access the websites and loads the dataset
+ * The user accesses the website and loads the dataset
  * Call from frontend towards backend is made to evaluate the dataset on the trained model
  * Results are returned and showed in an easy to understand way
 
